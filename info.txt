@@ -1,4 +1,4 @@
-#origin = gte
+#gte
 
 download model from kaggle link:-  https://www.kaggle.com/models/arjavankoliya/efficietnet_charactor_segmentation_gte
 dataset link:- https://www.kaggle.com/datasets/arjavankoliya/gujarati-final-dataset
