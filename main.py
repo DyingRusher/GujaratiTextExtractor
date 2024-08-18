@@ -1,6 +1,6 @@
-#remaining 1.sort boxes first by xmin then by ymin  know it 
-# 2. if confidense < 0.4 put space in between
-# 
+# remaining to optimize code
+# to be able to detect handwritten text and able to detect printed text other then this photo
+
 from ultralytics import YOLO
 import warnings
 import numpy as np
@@ -13,28 +13,22 @@ from docx import Document
 
 document = Document()
 
+model = YOLO('best (1).pt') # find words from whole images
 
-
-model = YOLO('best (1).pt')
-
-
-warnings.filterwarnings("ignore")
 
 #reading image and model 
-
-# img_name = 'test2.jpg'
 img_name = 'guj_pic.png'
-# img_name = 'test3.webp'
+img = cv2.imread(img_name)
+res = model(img_name)
 
-res = model('C://Users//ASUS//Desktop//gurati_text_extractor//datasets//yolo_dataset//' + img_name)
 boxes= res[0].boxes
-img = cv2.imread('C://Users//ASUS//Desktop//gurati_text_extractor//datasets//yolo_dataset//'+ img_name)
 
 #converting to black and white
 im = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 _,im = cv2.threshold(im,70,255,cv2.THRESH_BINARY)
 # print("first shape",im.shape)
 #calculating pixel frequancy
+
 col_di = {} 
 def count_color(img):
     w,h= img.shape
@@ -47,6 +41,7 @@ def count_color(img):
                 col_di[bw] = 1
 
 # if background is black inverse to black
+
 count_color(im)
 if col_di[0] > col_di[255]:
     im = cv2.bitwise_not(im)

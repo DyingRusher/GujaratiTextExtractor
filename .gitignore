@@ -1,1 +1,6 @@
-/_pycache_
+__pycache__/
+
+effModel2.h5
+
+.gitignore
+

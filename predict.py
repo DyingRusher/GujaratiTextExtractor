@@ -48,7 +48,7 @@ def pre(img):
         
     # print("sdf",img1.shape)
     # print("before")
-    warnings.filterwarnings("ignore")
+    
     model = load_model('effModel2.h5')
     # print("after")
     # model2 = load_model('efficientnet_gujarati.h5')
